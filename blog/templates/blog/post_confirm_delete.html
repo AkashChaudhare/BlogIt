@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<br><br><br>
+<div class="container" style="width: 800px; height: 800">
+        <div class="jumbotron" style="width: 800px;height: 800">
+            <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Delete Post "{{ object.title }}"  ? :(</legend>
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-danger" type="submit">Delete It!!</button>
+                    <a class="btn btn-outline-info" href="{% url 'post-detail' object.id %}">Noooooooo!!</a>
+                </div>
+            </form>
+    
+    
+        </div>
+     
+        
+
+{% endblock content %}
