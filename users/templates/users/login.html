@@ -4,7 +4,7 @@
 
 <br>
 <div class="container" style="width: 600px; height: 800">
-        <div class="jumbotron" style="width: 600px;height: 800">
+        <div class="jumbotron" style="width: 600px;height: 800;background: white;">
             <form method="POST">
                 {% csrf_token %}
                 <fieldset class="form-group">
@@ -13,14 +13,19 @@
                 </fieldset>
                 <div class="form-group">
                     <button class="btn btn-outline-info" type="submit">Log in</button>
+                    
                 </div>
             </form>
     
             <div class="border-top pt-3">
                 <small class="text-muted">
                     Don't have an account? <a class="ml-2" href="{% url 'register' %}">Sign Up</a>
+                </small><br>
+                <small class="text-muted">
+                    Forgot Password? <a class="ml-2" href="{% url 'password_reset' %}">Reset Password</a>
                 </small>
             </div>
+            
     
         </div>
         <hr>
