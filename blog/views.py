@@ -16,7 +16,7 @@ def home(request):
 
 class PostListView(ListView): 
     model=Post               #passes on objects to html file,object iterables are referred to as context_object_name
-    template_name="blog/home.html"  #should be preferably - app/model_viewtype,html
+    template_name="blog/home.html"  #should be preferably - app/model_viewtype.html
     context_object_name='posts'   #matches name in html file
     ordering=["-date_posted"]
 
