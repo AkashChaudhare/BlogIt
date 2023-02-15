@@ -4,6 +4,7 @@ from .models import Post
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from users.models import Profile
+from django.db.models import Q
 # Create your views here.
 
 
@@ -46,7 +47,7 @@ class PostUpdateView(UserPassesTestMixin,LoginRequiredMixin,UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)# Call the base implementation first to get a context
-        context['title'] = 'Create'
+        context['title'] = 'Update'
         return context
 
     def form_valid(self, form):
@@ -84,6 +85,23 @@ class UserPostListView(ListView):
     def get_queryset(self):
         user=get_object_or_404(User,username=self.kwargs.get('username'))
         return Post.objects.filter(author=user).order_by('date_posted')
+
+class SearchListView(ListView):
+    model = Post
+    template_name = "blog/searchresults.html"
+    context_object_name='posts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)# Call the base implementation first to get a context
+        context['query'] = self.request.GET.get("searchstring")
+        return context
+
+    def get_queryset(self):  # new
+        query = self.request.GET.get("searchstring")
+        object_list = Post.objects.filter(
+            Q(title__icontains=query) | Q(content__icontains=query)
+        )
+        return object_list
     
     
 

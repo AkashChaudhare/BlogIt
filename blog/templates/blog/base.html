@@ -24,7 +24,9 @@
   <nav class="navbar sticky-top navbar-expand-sm navbar-dark py-2" style="background-color: #4A555E;">
     <div class="container-fluid">
       <a class="navbar-brand mr-5" href="{% url 'blog-home' %}"> <img src={% static '2.png' %} width="55px" height="40px"> blogit</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03"
         aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -40,8 +42,8 @@
 
         </ul>
 
-        <form class="ml-5" role="search">
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+        <form class="ml-5" role="search" action="{% url 'search-results' %}" method="get">
+          <input class="form-control" name="searchstring" type="search" placeholder="Search" aria-label="Search">
         </form>
 
         <ul class="navbar-nav ml-auto mb-2 mb-sm-0">
@@ -71,12 +73,12 @@
   </nav>
 
 
-  <div class="row g-5">
+  <div class="row g-5" style="width: 100%;">
    
 
-    <div class="col-md-2 col-lg-3 order-md-last">
+    <div class="col-sm-2 col-lg-3 ">
       <br><br>
-      <div class="container">
+      <div class="container" style="width:100%;padding-left:30px;">
         <h4 class="d-flex justify-content-between align-items-center mb-3">
           <span>News Board</span>
         </h4>
@@ -109,12 +111,12 @@
     </div>
 
     
-    <div class="col-md-7 col-lg-8">
-      <div class="container" style="width: 700px;">
+    <div class="col-sm-7 col-lg-8 order-sm-last" >
+      <div class="container" style="width:100%;">
         {% if messages %}
         {% for message in messages %}
         <br>
-          <div class="alert alert-{{ message.tags }}" style="width: 675px;">
+          <div class="alert alert-{{ message.tags }}" style="width: 100%;">
             {{ message }}
           </div>
         

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-
-<div class="container" style="width: 800px;">
+<br><br>
+<div class="container" style="width: 100%;">
     <br>
-    <div class="card" style="width: 750px;">
-        <div class="card-body" style="text-align: center;width: 750px;">
+    <div class="card" style="width: 100%;">
+        <div class="card-body" style="text-align: center;width: 100%;">
             <img class="rounded-circle account-img" src="{{ context_author.profile.image.url }}" width="100" height="100">
             <div class="media-body">
                 <h2 class="account-heading">{{context_author.username }}</h2>
@@ -14,7 +14,7 @@
                 <p class="text-secondary"> Posts till date : {% if posts %}
                                                             {{ posts|length }}
                                                             {% else %}
-                                                                No posts yets
+                                                                No posts yet
                                                             {% endif %}</p>
             </div>
         </div>
@@ -24,9 +24,10 @@
     
     <h2>Posts by  {{ view.kwargs.username }}</h2>
     <br>
+
     {% for post in posts %}
-    <div class="card" style="background: color #e9e9e9;">
-        <div class="row" style="width: 750px;padding: 10px;">
+    <div class="card" style="background: color #e9e9e9;width:100%">
+        <div class="row" style="width:100%;padding: 10px;">
             <div class="card-body" style="width: 10%; float:left">
                 <img class="rounded-circle account-img" src="{{ post.author.profile.image.url }}" width="60" height="60">
             </div>
