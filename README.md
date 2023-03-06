@@ -16,7 +16,7 @@ virtualenv venv_name
 
 ## Activate virtual environment
 ```
-venv_name/scripts/Activate
+venv_name\scripts\Activate
 ```
 
 ## Install all dependancies
